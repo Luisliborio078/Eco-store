@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   margin: 0px;
   padding: 0px;
@@ -35,6 +36,27 @@ nav .icons button {
 nav .icons button:hover {
   transform: scale(1.1);
   transition-duration: 0.2s;
+}
+@media (max-width: 768px) {
+  nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
+  }
+  nav p {
+    padding: 10px 0;
+    font-size: 1.35em;
+  }
+  nav .icons {
+    margin-top: 10px;
+  }
+}
+@media (max-width: 480px) {
+  nav p {
+    font-size: 1.2em;
+  }
 }
 
 article {
@@ -90,6 +112,57 @@ article img {
   width: 25vw;
   border-radius: 19px;
 }
+@media (max-width: 768px) {
+  article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 40px;
+  }
+  article .impact-section {
+    align-items: center;
+    margin-top: 30px;
+    gap: 20px;
+  }
+  article h1 {
+    font-size: 2.5em;
+  }
+  article p {
+    font-size: 1.35em;
+  }
+  article button {
+    width: 30vw;
+    padding: 15px;
+    margin-top: 20px;
+  }
+  article img {
+    width: 50vw;
+    margin-top: 30px;
+  }
+}
+@media (max-width: 480px) {
+  article {
+    padding-top: 20px;
+  }
+  article h1 {
+    font-size: 2em;
+  }
+  article p {
+    font-size: 1.2em;
+  }
+  article button {
+    width: 50vw;
+    padding: 12px;
+  }
+  article img {
+    width: 70vw;
+    margin-top: 20px;
+  }
+}
 
 section {
   width: auto;
@@ -99,6 +172,7 @@ section {
 section h2 {
   color: #7c6a0a;
   font-size: 2em;
+  text-align: center;
 }
 section .healthcare, section .furniture {
   padding-bottom: 60px;
@@ -126,6 +200,8 @@ section .healthcare .product-card, section .furniture .product-card {
   color: #7c6a0a;
   padding: 20px;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
 }
 section .healthcare .product-card .icon, section .furniture .product-card .icon {
   width: 100%;
@@ -141,13 +217,14 @@ section .healthcare .product-card .icon svg, section .furniture .product-card .i
 section .healthcare .product-card .product-image, section .furniture .product-card .product-image {
   width: 100%;
   height: auto;
+  flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 section .healthcare .product-card .product-image img, section .furniture .product-card .product-image img {
   width: 12vw;
-  height: 30vh;
+  height: 25vh;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 6px;
@@ -156,44 +233,150 @@ section .furniture .product-card {
   background: #babd8d;
   color: white;
 }
+@media (max-width: 768px) {
+  section {
+    padding: 40px 20px;
+  }
+  section h2 {
+    font-size: 1.8em;
+    padding-bottom: 40px;
+  }
+  section .healthcare, section .furniture {
+    padding-bottom: 40px;
+  }
+  section .healthcare h2, section .furniture h2 {
+    padding-bottom: 40px;
+  }
+  section .healthcare .card-section, section .furniture .card-section {
+    -moz-column-gap: 30px;
+         column-gap: 30px;
+    row-gap: 40px;
+  }
+  section .healthcare .product-card, section .furniture .product-card {
+    width: 40vw;
+    height: auto;
+  }
+  section .healthcare .product-card .product-image img, section .furniture .product-card .product-image img {
+    width: 35vw;
+    height: 20vh;
+  }
+}
+@media (max-width: 480px) {
+  section {
+    padding: 30px 10px;
+  }
+  section h2 {
+    font-size: 1.6em;
+    padding-bottom: 30px;
+  }
+  section .healthcare, section .furniture {
+    padding-bottom: 30px;
+  }
+  section .healthcare h2, section .furniture h2 {
+    padding-bottom: 30px;
+  }
+  section .healthcare .card-section, section .furniture .card-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 30px;
+  }
+  section .healthcare .product-card, section .furniture .product-card {
+    width: 80vw;
+    height: auto;
+  }
+  section .healthcare .product-card .product-image img, section .furniture .product-card .product-image img {
+    width: 70vw;
+    height: 25vh;
+  }
+}
 
 .about-us {
   padding-bottom: 60px;
+  padding-left: 60px;
+  padding-right: 60px;
 }
 .about-us h2 {
   font-weight: bold;
   padding-bottom: 60px;
+  text-align: center;
 }
 .about-us .mision-section {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  gap: 20px;
 }
 .about-us .mision-section .earth, .about-us .mision-section .innovation {
   width: 30vw;
   display: flex;
-  gap: 40px;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
   color: #e86424;
 }
 .about-us .mision-section .earth img, .about-us .mision-section .innovation img {
   -o-object-fit: cover;
      object-fit: cover;
+  width: 100%;
+  max-width: 200px;
+  border-radius: 8px;
 }
 .about-us .mision-section .earth p, .about-us .mision-section .innovation p {
   text-align: center;
-  text-justify: inter-word;
-  font-size: 1.5em;
+  font-size: 1.35em;
+}
+@media (max-width: 768px) {
+  .about-us {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+  }
+  .about-us h2 {
+    padding-bottom: 40px;
+  }
+  .about-us .mision-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+  }
+  .about-us .mision-section .earth, .about-us .mision-section .innovation {
+    width: 70vw;
+  }
+  .about-us .mision-section .earth p, .about-us .mision-section .innovation p {
+    font-size: 1.275em;
+  }
+}
+@media (max-width: 480px) {
+  .about-us .mision-section .earth, .about-us .mision-section .innovation {
+    width: 90vw;
+    gap: 15px;
+  }
+  .about-us .mision-section .earth p, .about-us .mision-section .innovation p {
+    font-size: 1.2em;
+  }
+}
+
+.gallery {
+  padding-left: 60px;
+  padding-right: 60px;
 }
 .gallery h2 {
   font-weight: bold;
   padding-bottom: 60px;
+  text-align: center;
 }
 .gallery .gallery-images {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 .gallery .gallery-images img {
   width: 28vw;
@@ -208,11 +391,42 @@ section .furniture .product-card {
   transform: scale(1.1);
   transition-duration: 0.6s;
 }
+@media (max-width: 768px) {
+  .gallery {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .gallery h2 {
+    padding-bottom: 40px;
+  }
+  .gallery .gallery-images {
+    justify-content: space-around;
+  }
+  .gallery .gallery-images img {
+    width: 45vw;
+    height: 35vh;
+  }
+}
+@media (max-width: 480px) {
+  .gallery .gallery-images {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .gallery .gallery-images img {
+    width: 80vw;
+    height: 30vh;
+  }
+}
 
 .location {
   color: #fa9500;
+  padding-left: 60px;
+  padding-right: 60px;
 }
 .location h2 {
+  text-align: center;
   padding-bottom: 60px;
   padding-top: 60px;
 }
@@ -223,17 +437,52 @@ section .furniture .product-card {
   align-items: center;
   padding-bottom: 50px;
 }
+.location .maps iframe {
+  max-width: 100%;
+  height: 450px;
+}
 .location h3, .location p {
   font-size: 1.5em;
   padding-left: 240px;
+  text-align: left;
+}
+@media (max-width: 768px) {
+  .location {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .location h2 {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .location h3, .location p {
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    font-size: 1.35em;
+  }
+}
+@media (max-width: 480px) {
+  .location h2 {
+    font-size: 1.8em;
+  }
+  .location h3, .location p {
+    font-size: 1.2em;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .location .maps iframe {
+    height: 300px;
+  }
 }
 
 footer {
   background-color: #fa9500;
   width: 100%;
   height: auto;
-  padding: 40px;
+  padding: 40px 20px;
   color: #fff;
+  box-sizing: border-box;
 }
 footer .social-media {
   display: flex;
@@ -242,7 +491,45 @@ footer .social-media {
   align-items: center;
   gap: 40px;
   padding-bottom: 40px;
+  flex-wrap: wrap;
 }
 footer img {
   cursor: pointer;
-}/*# sourceMappingURL=main.css.map */
+  width: 40px;
+  height: 40px;
+}
+@media (max-width: 480px) {
+  footer {
+    padding: 30px 15px;
+  }
+  footer .social-media {
+    gap: 25px;
+    padding-bottom: 30px;
+  }
+  footer img {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* === Responsive para pantallas menores a 768px (tablets) === */
+/*
+@media (max-width: 1024px) {
+  // Estilos para pantallas hasta 1024px (laptops pequeñas, tablets grandes en landscape)
+  article {
+    button {
+      width: 20vw;
+    }
+    img {
+      width: 30vw;
+    }
+  }
+
+  section .healthcare .product-card {
+    width: 20vw;
+    .product-image img {
+      width: 18vw;
+    }
+  }
+}
+*//*# sourceMappingURL=main.css.map */

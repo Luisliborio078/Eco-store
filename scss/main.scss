@@ -6,6 +6,9 @@ $font-stack: "IBM Plex Sans", sans-serif;
 $paragraph-size: 1.5em;
 $backgroun-color: #fa9500;
 
+// Breakpoints
+$tablet-width: 768px;
+$mobile-width: 480px;
 
 @mixin flexCenter ($direction, $content, $aling){
   display: flex;
@@ -19,10 +22,10 @@ $backgroun-color: #fa9500;
     background: none;
     border-style: none;
     cursor: pointer;
-     &:hover {
-        transform: scale(1.1);
-        transition-duration: 0.2s;
-      }
+    &:hover {
+      transform: scale(1.1);
+      transition-duration: 0.2s;
+    }
   }
 }
 
@@ -39,7 +42,6 @@ nav {
   @include flexCenter(row, space-between, center );
   color: $primary-text-color;
   padding: 15px;
-  
 
   p {
     font-size: $paragraph-size;
@@ -54,7 +56,25 @@ nav {
   .icons {
     display: flex;
     @include buttonStyle;
-    
+  }
+
+  // Responsive Nav
+  @media (max-width: $tablet-width) {
+    @include flexCenter(column, center, center);
+    padding: 15px 0;
+    p {
+      padding: 10px 0;
+      font-size: $paragraph-size * 0.9;
+    }
+    .icons {
+      margin-top: 10px;
+    }
+  }
+
+  @media (max-width: $mobile-width) {
+    p {
+      font-size: $paragraph-size * 0.8;
+    }
   }
 }
 
@@ -65,7 +85,7 @@ article {
   padding-right: 50px;
   @include flexCenter(row, space-between, center );
   padding-top: 70px;
-  
+
   .impact-section {
     @include flexCenter(column, space-evenly, flex-start);
     margin-top: 50px;
@@ -100,6 +120,55 @@ article {
     width: 25vw;
     border-radius: 19px;
   }
+
+  // Responsive Article
+  @media (max-width: $tablet-width) {
+    @include flexCenter(column, center, center);
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 40px;
+
+    .impact-section {
+      align-items: center;
+      margin-top: 30px;
+      gap: 20px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+    }
+    p {
+      font-size: $paragraph-size * 0.9;
+    }
+    button {
+      width: 30vw;
+      padding: 15px;
+      margin-top: 20px;
+    }
+    img {
+      width: 50vw;
+      margin-top: 30px;
+    }
+  }
+
+  @media (max-width: $mobile-width) {
+    padding-top: 20px;
+    h1 {
+      font-size: 2em;
+    }
+    p {
+      font-size: $paragraph-size * 0.8;
+    }
+    button {
+      width: 50vw;
+      padding: 12px;
+    }
+    img {
+      width: 70vw;
+      margin-top: 20px;
+    }
+  }
 }
 
 section {
@@ -110,6 +179,7 @@ section {
   h2 {
     color: $primary-text-color;
     font-size: 2em;
+    text-align: center; // Centrar títulos en secciones
   }
 
   .healthcare {
@@ -135,6 +205,8 @@ section {
       color: $primary-text-color;
       padding: 20px;
       border-radius: 8px;
+      display: flex; // Añadido para mejor control interno
+      flex-direction: column; // Añadido
 
       .icon {
         width: 100%;
@@ -150,13 +222,14 @@ section {
 
       .product-image {
         width: 100%;
-        height: auto;
+        height: auto; // Ajustado para permitir crecimiento
+        flex-grow: 1; // Permite que la imagen ocupe espacio disponible
         display: flex;
         justify-content: center;
         align-items: center;
         img {
           width: 12vw;
-          height: 30vh;
+          height: 25vh; // Ajustado para mejor proporción
           object-fit: cover;
           border-radius: 6px;
         }
@@ -170,47 +243,147 @@ section {
       color: white;
     }
   }
+
+  // Responsive Section
+  @media (max-width: $tablet-width) {
+    padding: 40px 20px;
+    h2 {
+      font-size: 1.8em;
+      padding-bottom: 40px;
+    }
+    .healthcare {
+      padding-bottom: 40px;
+      h2 {
+        padding-bottom: 40px;
+      }
+      .card-section {
+        column-gap: 30px; // Reducir el espacio entre tarjetas
+        row-gap: 40px;
+      }
+      .product-card {
+        width: 40vw; // 2 tarjetas por fila aprox.
+        height: auto; // Altura automática para contenido variable
+
+        .product-image img {
+          width: 35vw;
+          height: 20vh;
+        }
+      }
+    }
+  }
+
+  @media (max-width: $mobile-width) {
+    padding: 30px 10px;
+    h2 {
+      font-size: 1.6em;
+      padding-bottom: 30px;
+    }
+    .healthcare {
+      padding-bottom: 30px;
+      h2 {
+        padding-bottom: 30px;
+      }
+      .card-section {
+        @include flexCenter(column, center, center); // Una tarjeta por fila
+        row-gap: 30px;
+      }
+      .product-card {
+        width: 80vw; // Tarjeta ocupa más ancho
+        height: auto;
+
+        .product-image img {
+          width: 70vw;
+          height: 25vh;
+        }
+      }
+    }
+  }
 }
 
 .about-us {
   padding-bottom: 60px;
+  padding-left: 60px; // Añadido padding general
+  padding-right: 60px; // Añadido padding general
   h2 {
     font-weight: bold;
     padding-bottom: 60px;
+    text-align: center;
   }
   .mision-section {
     @include flexCenter(row, space-evenly, center );
+    gap: 20px; // Añadido para separar elementos si se envuelven
     .earth {
       width: 30vw;
       display: flex;
-      gap: 40px;
+      flex-direction: column; // Para alinear imagen y texto verticalmente
+      align-items: center; // Centrar contenido de 'earth'
+      gap: 20px; // Espacio entre imagen y texto
       color: #e86424;
 
       img {
         object-fit: cover;
+        width: 100%; // Imagen ocupa el ancho de su contenedor
+        max-width: 200px; // Limitar tamaño de imagen
+        border-radius: 8px; // Suavizar bordes
       }
 
       p {
         text-align: center;
-        text-justify: inter-word;
-        font-size: $paragraph-size;
+        // text-justify: inter-word; // Puede ser problemático, considera 'left' o 'center'
+        font-size: $paragraph-size * 0.9; // Ligeramente más pequeño
       }
     }
   }
 
   .innovation {
-    @extend .earth;
+    @extend .earth; // Considera si realmente deben ser idénticos en responsive
   }
 
+  // Responsive About Us
+  @media (max-width: $tablet-width) {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+    h2 {
+      padding-bottom: 40px;
+    }
+    .mision-section {
+      @include flexCenter(column, center, center);
+      gap: 40px; // Espacio entre 'earth' e 'innovation' cuando están en columna
+      .earth {
+        width: 70vw;
+        p {
+          font-size: $paragraph-size * 0.85;
+        }
+      }
+    }
+  }
+  @media (max-width: $mobile-width) {
+    .mision-section {
+      .earth {
+        width: 90vw;
+        gap: 15px;
+        p {
+          font-size: $paragraph-size * 0.8;
+        }
+      }
+    }
+  }
 }
 
 .gallery {
+  padding-left: 60px; // Añadido padding general
+  padding-right: 60px; // Añadido padding general
   h2 {
     font-weight: bold;
     padding-bottom: 60px;
+    text-align: center;
   }
   .gallery-images {
     @include flexCenter(row, space-between , center );
+    flex-wrap: wrap; // Permitir que las imágenes se envuelvan
+    gap: 20px; // Espacio entre imágenes
+
     img {
       width: 28vw;
       height: 45vh;
@@ -223,44 +396,141 @@ section {
       }
     }
   }
+  // Responsive Gallery
+  @media (max-width: $tablet-width) {
+    padding-left: 20px;
+    padding-right: 20px;
+    h2 {
+      padding-bottom: 40px;
+    }
+    .gallery-images {
+      justify-content: space-around; // Distribuir mejor con menos elementos
+      img {
+        width: 45vw; // 2 imágenes por fila aprox.
+        height: 35vh;
+      }
+    }
+  }
+  @media (max-width: $mobile-width) {
+    .gallery-images {
+      @include flexCenter(column, center, center); // Una imagen por fila
+      img {
+        width: 80vw;
+        height: 30vh;
+      }
+    }
+  }
 }
 
 .location {
   color: $backgroun-color;
+  padding-left: 60px; // Añadido padding general
+  padding-right: 60px; // Añadido padding general
   h2 {
-    
+    text-align: center;
     padding-bottom: 60px;
     padding-top: 60px;
   }
   .maps {
     @include flexCenter(row, center, center );
     padding-bottom: 50px;
-
+    iframe { // Para hacer el mapa responsivo
+        max-width: 100%;
+        height: 450px; // Ajusta según necesidad
+    }
   }
   h3, p {
     font-size: $paragraph-size;
-    padding-left: 240px;
+    padding-left: 240px; // Esto podría necesitar ajuste
+    text-align: left; // Por defecto
   }
 
+  // Responsive Location
+  @media (max-width: $tablet-width) {
+    padding-left: 20px;
+    padding-right: 20px;
+    h2 {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+    h3, p {
+      padding-left: 20px; // Reducir o eliminar padding para centrar
+      padding-right: 20px;
+      text-align: center; // Centrar texto en pantallas pequeñas
+      font-size: $paragraph-size * 0.9;
+    }
+  }
+  @media (max-width: $mobile-width) {
+    h2 {
+      font-size: 1.8em; // Un poco más pequeño para móviles
+    }
+    h3, p {
+      font-size: $paragraph-size * 0.8;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .maps iframe {
+        height: 300px;
+    }
+  }
 }
 
 footer {
   background-color: $backgroun-color;
-  width: 100%;
+  width: 100%; // Ya es 100%, box-sizing ayuda
   height: auto;
-  padding: 40px;
+  padding: 40px 20px; // Añadido padding horizontal
   color: #fff;
+  box-sizing: border-box; // Asegurar que el padding no añada al width
 
   .social-media {
-  
     @include flexCenter(row, center, center );
     gap: 40px;
     padding-bottom: 40px;
-    
+    flex-wrap: wrap; // Para que los iconos se ajusten si no caben
   }
 
   img {
     cursor: pointer;
+    width: 40px; // Tamaño ejemplo, ajusta según tus iconos
+    height: 40px;
+  }
+  // Responsive Footer
+  @media (max-width: $mobile-width) {
+    padding: 30px 15px;
+    .social-media {
+      gap: 25px;
+      padding-bottom: 30px;
+    }
+    img {
+      width: 35px;
+      height: 35px;
+    }
   }
 }
 
+/* === Responsive para pantallas menores a 768px (tablets) === */
+// Este comentario ya está cubierto por las media queries de arriba.
+// Puedes eliminarlo o usarlo para breakpoints específicos si lo deseas.
+
+// Ejemplo de un breakpoint más específico si fuera necesario:
+/*
+@media (max-width: 1024px) {
+  // Estilos para pantallas hasta 1024px (laptops pequeñas, tablets grandes en landscape)
+  article {
+    button {
+      width: 20vw;
+    }
+    img {
+      width: 30vw;
+    }
+  }
+
+  section .healthcare .product-card {
+    width: 20vw;
+    .product-image img {
+      width: 18vw;
+    }
+  }
+}
+*/
